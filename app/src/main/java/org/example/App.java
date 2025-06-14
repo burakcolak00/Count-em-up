@@ -10,5 +10,71 @@ public class App {
 
     public static void main(String[] args) {
         System.out.println(new App().getGreeting());
+
+        System.out.println("\nTesting Custom Counter Max");
+        GroceryCounter counter1 = new GroceryCounter(999);
+        for(int i = 0; i < 9; i++) {
+            counter1.ones();
+        }
+        System.out.println(counter1.total());
+
+        counter1.ones();
+        System.out.println(counter1.total());
+
+
+        GroceryCounter counter = new GroceryCounter();
+        System.out.println("\nInitializing counter as default value: 0000");
+        System.out.println("Total: "+counter.total()); // This would print out $0.00
+        
+        System.out.println("\nAdding 2 tens and one hundreths");
+        counter.tens();
+        counter.tens();
+        counter.hundreths();
+        
+        System.out.println("Total: "+counter.total()); // This would print out $20.01
+        System.out.println("Overflows: "+counter.overflows()); // This would print out 0
+        
+        System.out.println("\nAdding ones 35 times");
+        for(int i = 0; i < 35; i++) {
+            counter.ones();
+        }
+        
+        System.out.println("Total: "+counter.total()); // This would print out $55.01
+        System.out.println("Overflows: "+counter.overflows()); // This would print out 0
+        
+        System.out.println("\nAdding ones 100 times");
+        for(int i = 0; i < 100; i++) {
+            counter.ones();
+        }
+        
+        System.out.println("Total: "+counter.total()); // This would print out $55.00
+        System.out.println("Overflows: "+counter.overflows()); // This would print out 1
+        
+        System.out.println("\nClear counter");
+        counter.clear();
+        
+        System.out.println("Total: "+counter.total()); // This would print out $0.00
+        System.out.println("Overflows: "+counter.overflows()); // This would print out 0
+
+        System.out.println("\nAdding ones 3 times");
+        counter.ones();
+        counter.ones();
+        counter.ones();
+        
+        System.out.println("Total: "+counter.total());
+
+        System.out.println("\ndecrementHundreths");
+        counter.decrementHundreths();
+        System.out.println("Total: "+counter.total());
+
+        System.out.println("\nIncreasing counter by 869");
+        counter.increment(869);
+        System.out.println("Total: "+counter.total());
+        System.out.println("Overflows: "+counter.overflows());
+
+        System.out.println("\nIncreasing counter by 9000");
+        counter.increment(9000);
+        System.out.println("Total: "+counter.total());
+        System.out.println("Overflows: "+counter.overflows());
     }
 }
